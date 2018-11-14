@@ -1,4 +1,4 @@
 
 basic.forever(function () {
-    grovegsr.showBar(grovegsr.getGSR(GroveGsrPins.P0));
+    grovegsr.showBar(grovegsr.getGsrIndex(GroveGsrPins.P0));
 })

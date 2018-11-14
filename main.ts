@@ -17,22 +17,28 @@ enum GroveGsrPins {
  */
 //% weight=10 color=#9F79EE icon="\uf108" block="Grove - GSR"
 namespace grovegsr {
-    let gsr_data: number[] = [700, 670, 640, 610, 580, 550, 520, 490, 460, 430, 400, 370, 340, 310, 280, 250];
+    let gsr_data_list: number[] = [700, 660, 620, 580, 520, 500, 480, 460, 440, 420, 400, 380, 360, 340, 320, 300];
     
     /**
      * Get Grove - GSR index 
      * @param pin the analog pin
      */
-    //% blockId=gsr_get_gsr block="get GSR index at pin|%pin|"
-    export function getGSR(pin: GroveGsrPins) {
+    //% blockId=gsr_get_gsr_index block="get GSR index at pin|%pin|"
+    export function getGsrIndex(pin: GroveGsrPins) {
         let num: number;
-        let p: number = pin;
-        num = pins.analogReadPin(<AnalogPin>p);
+        num = getGsrData(pin);
         let index: number = 0;
-        while (num < gsr_data[index]) {
+        while (num < gsr_data_list[index]) {
             index++;
         }
         return (index);
+    }
+
+
+    export function getGsrData(pin: GroveGsrPins) {
+        let p: number = pin;
+        let num: number = pins.analogReadPin(<AnalogPin>p);
+        return num
     }
 
     /**
